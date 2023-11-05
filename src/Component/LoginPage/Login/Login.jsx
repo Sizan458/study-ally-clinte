@@ -5,7 +5,7 @@ const Login = () => {
     return (
         <div>
            <LogForm></LogForm>
-           <div className="w-[97%] mx-auto mt-2">
+           <div className="w-[97%] mx-auto mt-2 ">
             <Footer></Footer>
            </div>
         </div>
