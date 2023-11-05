@@ -8,7 +8,7 @@ const Feature = () => {
     AOS.init({duration: 3000});
   },[])
     return (
-        <div className="bg-[#99b3ff]  hero-content  w-[95%]     mx-auto my-2 grid  grid-cols-1 gap-3 dark:rounded-xl  dark:bg-teal-400 md:grid-cols-2 lg:grid-cols-4 lg:h-[60vh]">
+        <div className="bg-[#99b3ff]  hero-content  w-[95%]     mx-auto my-2 grid  grid-cols-1 gap-3 dark:rounded-xl  dark:bg-teal-300 md:grid-cols-2 lg:grid-cols-4 lg:h-[60vh]">
            
             <div className="card glass  md:h-[250px] " data-aos="fade-down">
   <figure><img src="https://i.ibb.co/v1tGLFv/rewards-exp.gif" className="h-[150px] mt-2 py-4"/></figure>
