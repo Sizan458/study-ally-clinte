@@ -13,7 +13,7 @@ const Banner = () => {
     })
     return (
         <div className="w-[97%] mx-auto mt-1">
-           <div className="hero bg-base-200 dark:bg-teal-100 dark:rounded-lg">
+           <div className="hero bg-[#b3d9ff] dark:bg-emerald-200 dark:rounded-lg">
   <div className="hero-content flex-col md:flex-row-reverse ">
     <div>
     <Lottie animationData={ bannerAnimation} className="h-[190px] md:h-[360px] md:w-[310px] lg:w-[550px] lg:h-[450px]"></Lottie>

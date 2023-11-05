@@ -16,7 +16,7 @@ const Nav = () => {
     </>
     return (
         <div className="mx-2  ">
-           <div className="navbar  bg-base-300  dark:bg-green-100 rounded-xl ">
+           <div className="navbar  bg-[#b3d9ff] dark:bg-emerald-200 rounded-xl ">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost btn-circle">
