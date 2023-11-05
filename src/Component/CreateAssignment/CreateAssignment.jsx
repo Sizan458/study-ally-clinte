@@ -2,6 +2,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import Footer from "../Footer/Footer";
 
 const CreateAssignment = () => {
     //react date pick plugin
@@ -33,12 +34,13 @@ const CreateAssignment = () => {
       </div>
       <div className=" grid grid-cols-1 gap-5 m-3 form-control md:grid-cols-2">
       <input type="url" placeholder="Thumbnail
-Image URL" name="url"  className="input input-bordered input-error   w-[300px] md:w-[280px] lg:w-[370px]" />
+ Image URL" name="url"  className="input input-bordered input-error   w-[300px] md:w-[280px] lg:w-[370px]" />
      <DatePicker selected={selectDate} onChange={date=>setSelectDate(date)} name="date" dateFormat="yyyy/MM/dd" placeholderText="Submission Date" className="input input-bordered input-error  w-[300px] md:w-[280px] lg:w-[370px]"/>
       </div>
       <div className=" grid grid-cols-1 gap-5 m-3 form-control md:grid-cols-2  ">
      
      <select name="level"   placeholder="Assignment Level"  className="select select-error w-[300px] md:w-[280px] lg:w-[370px] ">
+  <option value="Assignment Level" selected disabled>Assignment Level</option>
   <option value='Easy'>Easy</option>
   <option value="Medium">Medium</option>
   <option value="Hard">Hard</option>
@@ -61,9 +63,12 @@ Image URL" name="url"  className="input input-bordered input-error   w-[300px] m
 
       </div>
      
-      <button className="btn glass w-full mt-3 text-xl">Create Assignment</button>
+      <button className="btn glass w-full mt-3 text-rose-700 text-xl">Create Assignment</button>
     </form>
   </div>
+</div>
+<div className="w-[97%] mx-auto">
+  <Footer></Footer>
 </div>
         </div>
     );
