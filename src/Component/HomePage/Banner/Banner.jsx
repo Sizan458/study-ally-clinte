@@ -20,7 +20,7 @@ const Banner = () => {
     </div>
     <div>
       <div>
-      <h1 className="text-[1.1rem] text-center font-bold  md:text-[1.2rem] lg:text-[2rem]  dark:text-emerald-400" >{typeEffect}</h1>
+      <h1 className="text-[1.1rem] text-center font-bold  text-black md:text-[1.2rem] lg:text-[2rem]  dark:text-emerald-400" >{typeEffect}</h1>
       </div>
       
     </div>
