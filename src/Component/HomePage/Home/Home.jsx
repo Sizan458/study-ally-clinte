@@ -2,6 +2,7 @@ import Footer from "../../Footer/Footer";
 import Banner from "../Banner/Banner";
 import Faq from "../FAQ/FAQ";
 import Feature from "../Feature/Feature";
+import Mar from "../Marquee/Marquee";
 
 
 const Home = () => {
@@ -19,6 +20,9 @@ const Home = () => {
             </div>
             <div>
                <Faq></Faq>
+            </div>
+            <div>
+                <Mar></Mar>
             </div>
             <div className="mt-2 w-[99%] mx-auto ">
                 <Footer></Footer>
