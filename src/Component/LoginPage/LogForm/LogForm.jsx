@@ -1,8 +1,38 @@
 
 import Lottie from "lottie-react";
 import logAnimation from "../../../assets/login.json"
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Hooks/AuthProvider/AuthProvider";
+
 const LogForm = () => {
+  const [see,setSee]=useState(false);
+  const[logError,setLogError]=useState('');
+  const[success, setSuccess]=useState('');
+  //page reload function
+  const location=useLocation()
+  const navigate  =useNavigate()
+  const{signIn}=useContext(AuthContext)
+ const handleLogIn = e => {
+  e.preventDefault();
+  const from = e.target;
+  const email= from.email.value;
+  const password = from.password.value;
+  const user ={email,password}
+  console.log(user);
+    //reset error message & success message
+    setLogError('');
+    setSuccess('');
+     //sign in the user with the email and password
+     signIn(email,password)
+     .then(result=>{console.log(result)
+       // navigate to page after successful login
+       navigate(location.state)
+       setSuccess('Successfully login ');
+     })
+     .catch(err=>{setLogError(err.message)});
+
+ }
     return (
         <div className="w-[97%] mx-auto m-2 ">
            <div className=" bg-purple-300   dark:bg-indigo-300  dark:rounded-lg  lg:w-[90%] lg:mx-auto" >
@@ -12,24 +42,30 @@ const LogForm = () => {
       <Lottie animationData={logAnimation} className="m-3 h-[250px] md:h-[340px] lg:h-[550px] lg::ml-[160px]"></Lottie>
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 ">
-      <form className="card-body">
+      <form className="card-body" onSubmit={handleLogIn}>
+      {
+    logError && <p className="text-red-700 text-center text-2xl">{logError}</p>
+  }
+  {
+   success &&  <p className="text-green-700 text-center text-2xl">{success}</p>
+  }
        
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" className="input input-bordered" required />
+          <input type="email" placeholder="email" name="email" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" placeholder="password" className="input input-bordered" required />
+          <input type={see? "text" : "password"}  placeholder="password" name="password" className="input input-bordered" required />
           <div className="flex gap-2 justify-between">
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
-          <p className="text-xm  mt-1 ml-[80px]">Show password</p>
+          <span className="text-xm  mt-1 ml-[80px]"  onClick={()=>setSee(!see)}>Show password</span>
           </div>
         </div>
         <div className="form-control mt-6">

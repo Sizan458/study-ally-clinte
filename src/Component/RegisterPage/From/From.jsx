@@ -12,9 +12,10 @@ const From = () => {
     e.preventDefault();
     const from = e.target;
     const name = from.name.value;
+    const photo = from.photo.value;
     const email = from.email.value;
     const password = from.password.value;
-    const user ={name, email, password}
+    const user ={name, email, password,photo}
     //password condition
     if(password.length<6){
       swal("password must be at least 6 characters");
@@ -61,6 +62,12 @@ const From = () => {
             <span className="label-text">Name</span>
           </label>
           <input type="text" placeholder="Name" name="name"  className="input input-bordered" required />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Photo url</span>
+          </label>
+          <input type="url" placeholder="Photo Url" name="photo"  className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">

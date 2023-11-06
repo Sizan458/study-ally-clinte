@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider/Auth";
 import { Navigate, useLocation } from "react-router-dom";
+import Lottie from "lottie-react";
+import loadingAnimation from"../../../assets/loading.json"
 const PrivateRoute = ({children}) => {
     const{user,loading} =useContext(AuthContext)
     const location= useLocation()
    if(loading){
-    return<span className="loading loading-spinner loading-lg ml-[40%] md:ml-[50%]"></span>
+    return<span >
+        <Lottie animationData={loadingAnimation} />
+    </span>
    }
 
     if(user){
