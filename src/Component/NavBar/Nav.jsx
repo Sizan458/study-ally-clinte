@@ -1,8 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Dark } from "../Hooks/Darkmode/Dark";
 import { BsSunFill,BsMoonFill } from "react-icons/bs";
+import { useContext } from "react";
+import { AuthContext } from "../Hooks/AuthProvider/AuthProvider";
 
 const Nav = () => {
+  const{user,logOut}=useContext(AuthContext)
+  //log out the user
+  const handleLogOut = () => {
+    logOut();
+  }
 
     const {changeTheme,mode}=Dark()
     const link=<>
@@ -31,7 +38,28 @@ const Nav = () => {
     <img src="https://i.ibb.co/wdHrP5r/studyally-logo-thumbnail-removebg-preview.png" className="h-[70px]"/>
   </div>
   <div className="navbar-end">
-    <button className="btn btn-ghost btn-circle text-2xl   text-black   " onClick={changeTheme}>{mode === "dark"? <BsMoonFill></BsMoonFill>:<BsSunFill></BsSunFill> }</button>
+    <button className="btn btn-ghost btn-circle text-2xl   text-black  m-2 " onClick={changeTheme}>{mode === "dark"? <BsMoonFill></BsMoonFill>:<BsSunFill></BsSunFill> }</button>
+     {/*dynamic show user */}
+    <div className="flex flex-col">
+      {
+        user?<div>
+           <div className="tooltip tooltip-left" data-tip={user.displayName}>
+  <button className="btn btn-circle "><div className="dropdown dropdown-end">
+    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+      <div className="w-10 rounded-full">
+        <img src={user.photoURL} alt={user.displayName} />
+      </div>
+    </label>
+    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+    <li><button className="btn btn-error btn-sm"  onClick={handleLogOut}>Logout</button></li>
+    </ul>
+  </div></button>
+</div>
+        </div>
+        :<Link to="/login"><button className="btn btn-error " >Login</button></Link>
+      }
+    </div>
+   
   </div>
 </div>
         </div>

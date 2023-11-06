@@ -2,11 +2,14 @@
 import { useContext, useState } from "react";import Lottie from "lottie-react";
 import registerAnimation from "../../../assets/register.json"
 import { AiOutlineGoogle } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 import { AuthContext } from "../../Hooks/AuthProvider/AuthProvider";
 const From = () => {
   const [see,setSee]=useState(false);
+  //page reload function
+  const location=useLocation()
+  const navigate  =useNavigate()
   const{userEmail,googleSignIn}=useContext(AuthContext);
   const handleRegister =e =>{
     e.preventDefault();
@@ -43,9 +46,17 @@ const From = () => {
     googleSignIn()
     .then(result=>{
        console.log(result.user)
-       
+       // navigate to page after successful login
+       navigate(location.state)
+       //if successful login
+       swal("Good job!", "You are successfully registered", "success");
     })
-    .then(error=>console.error(error))
+    .then(error=>{
+      console.log(error.message)
+      //if failed login
+      swal("There was an problem. Please try again");
+      return 
+    })
   }
     return (
         <div className="w-[97%] mx-auto m-2 ">
@@ -91,7 +102,7 @@ const From = () => {
         <button className="btn btn-outline btn-success text-xl font-bold">Register</button>
         <button className="btn btn-outline btn-accent text-4xl font-bold mt-4" onClick={handleGoogle}><AiOutlineGoogle></AiOutlineGoogle></button>
         <div>
-            <p className="text-xl font-bold text-black mt-2 text-center">Already have an account<Link to='/login' className="text-red-700">Login</Link></p>
+            <p className="text-xl font-bold text-black mt-2 text-center">Already have an account <Link to='/login' className="text-red-700">Login</Link></p>
         </div>
         </div>
       </form>
