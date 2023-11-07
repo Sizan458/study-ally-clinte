@@ -3,11 +3,16 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import Footer from "../Footer/Footer";
+import { useLoaderData } from "react-router-dom";
+
 
 
 const UpdateAssignment = () => {
-    const[selectDate ,setSelectDate] =useState(null);
-   
+    const[selectDate ,setSelectDate] =useState();
+    //fetch data
+    const userUpdate = useLoaderData()
+    const {Pdf,date,description,email,level,mark,thumbnail,title}=userUpdate
+      
     const handleUpdate =e=>{
     e.preventDefault();
     const email = e.target.email.value;
@@ -31,18 +36,18 @@ const UpdateAssignment = () => {
   <div className="hero-content " >
     <form onSubmit={handleUpdate}>
       <div className=" grid grid-cols-1 gap-5 m-1 form-control md:grid-cols-2">
-      <input type="email" placeholder="Enter your login email" name="email" className="input input-bordered input-error text-black  w-[300px] md:w-[280px] lg:w-[370px]" />
-      <input type="text" placeholder="Tittle" name="tittle" className="input input-bordered input-error  w-[300px] md:w-[280px] lg:w-[370px]" />
+      <input type="email" placeholder="Enter your login email" defaultValue={email} name="email" className="input input-bordered input-error text-black  w-[300px] md:w-[280px] lg:w-[370px]" />
+      <input type="text" placeholder="Tittle" name="tittle" defaultValue={title} className="input input-bordered input-error  w-[300px] md:w-[280px] lg:w-[370px]" />
       </div>
       <div className=" grid grid-cols-1 gap-5 m-3 form-control md:grid-cols-2">
       <input type="url" placeholder="Thumbnail
- Image URL" name="url"  className="input input-bordered input-error   w-[300px] md:w-[280px] lg:w-[370px]" />
-     <DatePicker selected={selectDate} onChange={date=>setSelectDate(date)} name="date" dateFormat="yyyy/MM/dd" placeholderText="Submission Date" className="input input-bordered input-error  w-[300px] md:w-[280px] lg:w-[370px]"/>
+ Image URL" name="url" defaultValue={thumbnail}  className="input input-bordered input-error   w-[300px] md:w-[280px] lg:w-[370px]" />
+     <DatePicker selected={selectDate} onChange={date=>setSelectDate(date)} value={date}  name="date" dateFormat="yyyy/MM/dd" placeholderText="Submission Date" className="input input-bordered input-error  w-[300px] md:w-[280px] lg:w-[370px]"/>
       </div>
       <div className=" grid grid-cols-1 gap-5 m-3 form-control md:grid-cols-2  ">
      
-     <select name="level"   placeholder="Assignment Level"  className="select select-error w-[300px] md:w-[280px] lg:w-[370px] ">
-  <option value="Assignment Level" selected disabled>Assignment Level</option>
+     <select name="level"   placeholder="Assignment Level" defaultValue={level}  className="select select-error w-[300px] md:w-[280px] lg:w-[370px] ">
+  
   <option value='Easy'>Easy</option>
   <option value="Medium">Medium</option>
   <option value="Hard">Hard</option>
@@ -51,17 +56,17 @@ const UpdateAssignment = () => {
      
     
 
-      <input type="number" placeholder="Mark" name="mark" className="input input-bordered input-error  w-[300px] md:w-[280px] lg:w-[370px]" />
+      <input type="number" placeholder="Mark" defaultValue={mark} name="mark" className="input input-bordered input-error  w-[300px] md:w-[280px] lg:w-[370px]" />
 
       </div>
       <div className=" form-control mt-4">
      
-     <input type="url" name="pdf "   className="textarea textarea-error w-[300px]  md:w-[590px] lg:w-[780px]" placeholder="Put PDF Link Here"/>
+     <input type="url" name="pdf "  defaultValue={Pdf}  className="textarea textarea-error w-[300px]  md:w-[590px] lg:w-[780px]" placeholder="Put PDF Link Here"/>
 
      </div>
       <div className=" form-control mt-4">
      
-      <textarea  name="description" className="textarea textarea-error w-[300px] h-[250px] md:w-[590px] lg:w-[780px]" placeholder="Description"></textarea>
+      <textarea  name="description" defaultValue={description} className="textarea textarea-error w-[300px] h-[250px] md:w-[590px] lg:w-[780px]" placeholder="Description"></textarea>
 
       </div>
      
