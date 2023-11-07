@@ -16,7 +16,9 @@ const UpdateAssignment = () => {
     const level = e.target.level.value;
     const mark = e.target.mark.value
     const description = e.target.description.value
-    const user ={email, tittle,description, level, mark,date}
+    const pdf = e.target.pdf.value
+    const img= e.target.url.value
+    const user ={email, tittle,description, level, mark,date,pdf,img}
     console.log(user)
     }
     return (
@@ -54,7 +56,7 @@ const UpdateAssignment = () => {
       </div>
       <div className=" form-control mt-4">
      
-     <input type="url" name="pdr "   className="textarea textarea-error w-[300px]  md:w-[590px] lg:w-[780px]" placeholder="Put PDF Link Here"/>
+     <input type="url" name="pdf "   className="textarea textarea-error w-[300px]  md:w-[590px] lg:w-[780px]" placeholder="Put PDF Link Here"/>
 
      </div>
       <div className=" form-control mt-4">

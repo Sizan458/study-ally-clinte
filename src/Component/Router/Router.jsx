@@ -6,6 +6,7 @@ import Register from "../RegisterPage/Register/Register";
 import Login from "../LoginPage/Login/Login";
 import CreateAssignment from "../CreateAssignment/CreateAssignment";
 import UpdateAssignment from "../UpdateAssignment/UpdateAssignment";
+import PrivateRoute from "../Hooks/PrivateRoute/PrivateRoute";
 
 
 const Router =  createBrowserRouter([
@@ -31,7 +32,7 @@ const Router =  createBrowserRouter([
         },
         {
             path:"/createAssignment",
-            element:<CreateAssignment></CreateAssignment>
+            element:<PrivateRoute><CreateAssignment></CreateAssignment></PrivateRoute>
         },
         {
             path:"/updateAssignment",
