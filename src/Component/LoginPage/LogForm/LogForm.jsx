@@ -4,6 +4,8 @@ import logAnimation from "../../../assets/login.json"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Hooks/AuthProvider/AuthProvider";
+import { AiOutlineGoogle } from "react-icons/ai";
+import swal from 'sweetalert';
 
 const LogForm = () => {
   const [see,setSee]=useState(false);
@@ -12,7 +14,7 @@ const LogForm = () => {
   //page reload function
   const location=useLocation()
   const navigate  =useNavigate()
-  const{signIn}=useContext(AuthContext)
+  const{signIn,googleSignIn}=useContext(AuthContext)
  const handleLogIn = e => {
   e.preventDefault();
   const from = e.target;
@@ -27,12 +29,31 @@ const LogForm = () => {
      signIn(email,password)
      .then(result=>{console.log(result)
        // navigate to page after successful login
-       navigate(location.state)
+       navigate(location?.state? location?.state : '/')
        setSuccess('Successfully login ');
      })
      .catch(err=>{setLogError(err.message)});
 
  }
+
+ //login  with google
+ const handleGoogle=()=>{
+  googleSignIn()
+  .then(result=>{
+     console.log(result.user)
+    
+     //if successful login
+     swal("Good job!", "You are successfully registered", "success");
+      // navigate to page after successful login
+      navigate(location?.state? location?.state : '/')
+  })
+  .then(error=>{
+    console.log(error.message)
+    //if failed login
+    swal("There was an problem. Please try again");
+    return 
+  })
+}
     return (
         <div className="w-[97%] mx-auto m-2 ">
            <div className=" bg-purple-300   dark:bg-indigo-300  dark:rounded-lg  lg:w-[90%] lg:mx-auto" >
@@ -70,6 +91,8 @@ const LogForm = () => {
         </div>
         <div className="form-control mt-6">
         <button className="btn btn-outline btn-info text-xl font-bold">Login</button>
+       
+        <button className="btn btn-outline btn-accent text-4xl font-bold mt-4" onClick={handleGoogle}><AiOutlineGoogle></AiOutlineGoogle></button>
        
         <div>
             <p className="text-xl font-bold text-black mt-2 text-center">Do not  have an account <Link to='/register' className="text-rose-700">Register</Link></p>

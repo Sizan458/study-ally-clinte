@@ -14,7 +14,7 @@ const Nav = () => {
     const {changeTheme,mode}=Dark()
     const link=<>
      <li><NavLink to='/'>Home</NavLink></li>
-     <li><NavLink to='/createAssignment'>Create Assignment</NavLink></li>
+     <li><NavLink to='/allAssignments'>All Assignment</NavLink></li>
      <li><NavLink to='/updateAssignment'>Update Assignment</NavLink></li>
      <li><NavLink to="/register">Register</NavLink></li>
         
