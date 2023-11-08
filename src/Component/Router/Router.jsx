@@ -39,17 +39,17 @@ const Router =  createBrowserRouter([
         {
             path:"/updateAssignment/:id",
             element:<UpdateAssignment></UpdateAssignment>,
-            loader:({params})=>fetch(`http://localhost:5001/all-assignments/${params.id}`)
+            loader:({params})=>fetch(`https://study-ally-server-bniw1tw2p-mdsizan-mahmuds-projects.vercel.app/${params.id}`)
         },
         {
             path:"/allAssignments",
             element:<Assignment></Assignment>,
-            loader:()=>fetch('http://localhost:5001/all-level')
+            loader:()=>fetch('https://study-ally-server-bniw1tw2p-mdsizan-mahmuds-projects.vercel.app/all-level')
         },
         {
             path:"/viewAssignment/:id",
             element:<PrivateRoute><ViewAssignment></ViewAssignment></PrivateRoute>,
-            loader:({params})=>fetch(`http://localhost:5001/all-assignments/${params.id}`)
+            loader:({params})=>fetch(`https://study-ally-server-bniw1tw2p-mdsizan-mahmuds-projects.vercel.app/${params.id}`)
         }
     ]
     }

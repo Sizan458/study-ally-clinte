@@ -7,7 +7,9 @@ import { AuthContext } from "../../Hooks/AuthProvider/AuthProvider";
 import { AiOutlineGoogle } from "react-icons/ai";
 import swal from 'sweetalert';
 
+
 const LogForm = () => {
+  
   const [see,setSee]=useState(false);
   const[logError,setLogError]=useState('');
   const[success, setSuccess]=useState('');
@@ -22,12 +24,15 @@ const LogForm = () => {
   const password = from.password.value;
   const user ={email,password}
   console.log(user);
+   
     //reset error message & success message
     setLogError('');
     setSuccess('');
      //sign in the user with the email and password
      signIn(email,password)
+
      .then(result=>{console.log(result)
+
        // navigate to page after successful login
        navigate(location?.state? location?.state : '/')
        setSuccess('Successfully login ');

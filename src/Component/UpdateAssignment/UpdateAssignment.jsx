@@ -1,13 +1,16 @@
-import { useState } from "react";
+import {  useState } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import Footer from "../Footer/Footer";
 import { useLoaderData } from "react-router-dom";
+import useAxios from "../Hooks/useAxios/useAxios";
+
 
 
 
 const UpdateAssignment = () => {
+  const axios = useAxios()
     const[selectDate ,setSelectDate] =useState();
     //fetch data
     const userUpdate = useLoaderData()
@@ -25,7 +28,14 @@ const UpdateAssignment = () => {
     const img= e.target.url.value
     const user ={email, tittle,description, level, mark,date,pdf,img}
     console.log(user)
+
+   
+      axios.put('/all-assignments', user)
+    .then( res=>{console.log(res)}) 
+    .then(err=>{console.log(err)})
+    
     }
+    
     return (
         <div>
           <div>
@@ -61,7 +71,7 @@ const UpdateAssignment = () => {
       </div>
       <div className=" form-control mt-4">
      
-     <input type="url" name="pdf "  defaultValue={Pdf}  className="textarea textarea-error w-[300px]  md:w-[590px] lg:w-[780px]" placeholder="Put PDF Link Here"/>
+      <input type="url" placeholder="Put your pdr link here" defaultValue={Pdf} name="pdf" className="input input-bordered input-error  w-[300px]  md:w-[590px] lg:w-[780px]" />
 
      </div>
       <div className=" form-control mt-4">

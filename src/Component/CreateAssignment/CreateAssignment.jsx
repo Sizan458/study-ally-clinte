@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import Footer from "../Footer/Footer";
 
 import useAxios from "../Hooks/useAxios/useAxios";
+
 
 const CreateAssignment = () => {
   const axios =useAxios()
@@ -25,10 +26,13 @@ const CreateAssignment = () => {
 
     
 //put data to data base
+   
     axios.post('/all-assignments',user)
    .then(res=>{console.log(res)})
     .catch(err=>{console.log(err)})
     }
+
+   
     return (
         <div>
           <div>

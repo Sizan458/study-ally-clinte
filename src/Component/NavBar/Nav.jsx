@@ -15,7 +15,6 @@ const Nav = () => {
     const link=<>
      <li><NavLink to='/'>Home</NavLink></li>
      <li><NavLink to='/allAssignments'>All Assignment</NavLink></li>
-     <li><NavLink >Update Assignment</NavLink></li>
      <li><NavLink to="/register">Register</NavLink></li>
         
      <li><NavLink to='/login'>Login</NavLink></li>
