@@ -1,8 +1,23 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Preview
 
-Currently, two official plugins are available:
+![App Screenshot](https://i.ibb.co/L8TKr01/Web-capture-8-11-2023-19295-study-ally-11673-firebaseapp-com.jpg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+# Study Ally
+
+A simple  website to submit assignment 
+
+
+## Features
+
+- Light/dark mode toggle
+- Firebase auth
+- Use Axios & tanStack Query
+- You can update Assignment
+- Api make by me
+
+
+## 🔗 Links
+Livelink : https://study-ally-11673.firebaseapp.com
+
