@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import Footer from "../Footer/Footer";
 
+import useAxios from "../Hooks/useAxios/useAxios";
+
 const CreateAssignment = () => {
+  const axios =useAxios()
     //react date pick plugin
     const[selectDate ,setSelectDate] =useState(null);
    
@@ -16,8 +19,15 @@ const CreateAssignment = () => {
     const level = e.target.level.value;
     const mark = e.target.mark.value
     const description = e.target.description.value
-    const user ={email, tittle,description, level, mark,date}
-    console.log(user)
+    const pdf =  e.target.pdf.value
+    const url= e.target.url.value
+    const user ={email, tittle,description, level, mark,date,pdf,url}
+
+    
+//put data to data base
+    axios.post('/all-assignments',user)
+   .then(res=>{console.log(res)})
+    .catch(err=>{console.log(err)})
     }
     return (
         <div>
@@ -54,8 +64,7 @@ const CreateAssignment = () => {
       </div>
       <div className=" form-control mt-4">
      
-     <input type="url" name="pdr "   className="textarea textarea-error w-[300px]  md:w-[590px] lg:w-[780px]" placeholder="Put PDF Link Here"/>
-
+      <input type="url" placeholder="Put pdf link here" name="pdf" className="input input-bordered input-error  w-[300px]  md:w-[590px] lg:w-[780px]" />
      </div>
       <div className=" form-control mt-4">
      

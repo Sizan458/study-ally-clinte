@@ -43,7 +43,8 @@ const Router =  createBrowserRouter([
         },
         {
             path:"/allAssignments",
-            element:<Assignment></Assignment>
+            element:<Assignment></Assignment>,
+            loader:()=>fetch('http://localhost:5001/all-level')
         },
         {
             path:"/viewAssignment/:id",
