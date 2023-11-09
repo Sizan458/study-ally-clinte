@@ -2,14 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hooks/useAxios/useAxios";
 import ShowAssignment from "../ShowAssignment/ShowAssignment";
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+
 import Footer from "../../Footer/Footer";
 //declare level here
-
-
+const level =[
+    "Hard",
+    "Medium",
+    "Hard"
+]
 const Assignment = () => {
     //fetch level data
-    const level=useLoaderData()
+   
     //fill level
     const [select,setSelect] = useState("")
     //paginate level
@@ -18,6 +21,7 @@ const Assignment = () => {
     const axios= useAxios();
 const assignment =  async()=>{
   const res=  await axios.get(`/all-assignments?level=${select}`)
+  console.log(res)  
   return res;
 }
 
@@ -34,7 +38,7 @@ const assignment =  async()=>{
             <select onChange={(e)=>setSelect(e.target.value)} className="select select-info dark:select-accent ">
   <option disabled selected>Select Level</option>
   {
- level.map(item=><option value={item.level} key={item} className="text-[15px]">{item.level}</option>)
+ level.map(item=><option value={item} key={item} className="text-[15px]">{item}</option>)
   }
   <option></option>
   
@@ -46,7 +50,7 @@ const assignment =  async()=>{
           assignments?.data?.result.map(assignment=><ShowAssignment key={assignment._id} assignment={assignment}></ShowAssignment>)
           }
        </div>
-       <div className="mt-2 w-[97%] mx-auto ">
+       <div className="mt-2 w-[97%] mx-auto "> 0
     <Footer></Footer>
 </div>
        
