@@ -14,7 +14,7 @@ const Assignment = () => {
     //fetch level data
    
     //fill level
-    const [select,setSelect] = useState("")
+    const [select,setSelect] = useState('')
     //paginate level
     const [page ,setPage] = useState('')
     //using  axios & tanstack queries
@@ -50,7 +50,7 @@ const assignment =  async()=>{
           assignments?.data?.result.map(assignment=><ShowAssignment key={assignment._id} assignment={assignment}></ShowAssignment>)
           }
        </div>
-       <div className="mt-2 w-[97%] mx-auto "> 0
+       <div className="mt-2 w-[97%] mx-auto "> 
     <Footer></Footer>
 </div>
        
