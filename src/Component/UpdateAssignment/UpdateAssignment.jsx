@@ -14,7 +14,7 @@ const UpdateAssignment = () => {
     const[selectDate ,setSelectDate] =useState();
     //fetch data
     const userUpdate = useLoaderData()
-    const {Pdf,date,description,email,level,mark,thumbnail,title}=userUpdate
+    const {Pdf,date,description,email,level,mark,thumbnail,title,_id}=userUpdate
       
     const handleUpdate =e=>{
     e.preventDefault();
@@ -27,12 +27,13 @@ const UpdateAssignment = () => {
     const pdf = e.target.pdf.value
     const img= e.target.url.value
     const user ={email, tittle,description, level, mark,date,pdf,img}
-    console.log(user)
+    
 
    
-      axios.put('/all-assignments', user)
+      axios.put(`/all-assignments/${_id}`, user)
     .then( res=>{console.log(res)}) 
     .then(err=>{console.log(err)})
+    
     
     }
     

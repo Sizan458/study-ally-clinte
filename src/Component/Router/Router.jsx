@@ -9,6 +9,7 @@ import UpdateAssignment from "../UpdateAssignment/UpdateAssignment";
 import PrivateRoute from "../Hooks/PrivateRoute/PrivateRoute";
 import Assignment from "../allAssignmentPage/Assiignment/Assignment";
 import ViewAssignment from "../ViewAssignmentPage/ViewAssignment";
+import MyAssignment from "../MyAssignmentPage/MyAssignment/MyAssignment";
 
 
 const Router =  createBrowserRouter([
@@ -39,17 +40,22 @@ const Router =  createBrowserRouter([
         {
             path:"/updateAssignment/:id",
             element:<UpdateAssignment></UpdateAssignment>,
-            loader:({params})=>fetch(`https://study-ally-server.vercel.app/${params.id}`)
+            loader:({params})=>fetch(`http://localhost:5002/all-assignments/${params.id}`)
         },
         {
             path:"/allAssignments",
             element:<Assignment></Assignment>,
-            loader:()=>fetch('https://study-ally-server.vercel.app/all-level')
+            
         },
         {
             path:"/viewAssignment/:id",
             element:<PrivateRoute><ViewAssignment></ViewAssignment></PrivateRoute>,
-            loader:({params})=>fetch(`https://study-ally-server.vercel.app/${params.id}`)
+            loader:({params})=>fetch(`http://localhost:5002/all-assignments/${params.id}`)
+        },
+        {
+            path:"/myAssignments",
+            element:<MyAssignment/>
+
         }
     ]
     }

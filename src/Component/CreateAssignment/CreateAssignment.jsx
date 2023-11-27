@@ -30,7 +30,12 @@ const CreateAssignment = () => {
     axios.post('/all-assignments',user)
    .then(res=>{console.log(res)})
     .catch(err=>{console.log(err)})
+    // put dat into database
+    axios.post('/my-assignment',user)
+   .then(res=>{console.log(res)})
+    .catch(err=>{console.log(err)})
     }
+
 
    
     return (
