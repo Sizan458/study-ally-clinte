@@ -7,8 +7,8 @@ import swal from 'sweetalert';
 import { AuthContext } from "../../Hooks/AuthProvider/AuthProvider";
 const From = () => {
   const [see,setSee]=useState(false);
-  const{userEmail}=useContext(AuthContext);
-  const handleRegister =e =>{
+  const{userEmail,updateUserProfile}=useContext(AuthContext);
+  const handleRegister = async e =>{
     e.preventDefault();
     const from = e.target;
     const name = from.name.value;
@@ -32,10 +32,13 @@ const From = () => {
      }
      
     //email & password  register
-    userEmail(email, password)
+     await userEmail(email, password)
     .then(result =>{console.log(result)})
     .catch(err =>{console.log(err)});
-    
+    //update user profile
+    await updateUserProfile(name, photo)
+    .then(result =>{console.log(result)})
+    .catch(err =>{console.log(err)});
    }
 
    

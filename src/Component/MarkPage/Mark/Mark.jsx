@@ -4,7 +4,7 @@ import ShowPdf from "../ShowPdf/ShowPdf";
 
 const Mark = () => {
     const data =useLoaderData()
-    console.log(data)
+    
     return (
         <div>
            <div>

@@ -24,12 +24,13 @@ const Single = ({sub}) => {
       <div >
          <p className="text-xl font-semibold text-black  dark:text-teal-700 lg:text2xl ">Mark: {mark} </p>
       </div>
-      <div>
-       <p className="m-2  text-black  dark:text-teal-700 lg:text2xl ">{email}</p>
+      <div >
+         <p className="text-xl font-semibold text-black  dark:text-teal-700 lg:text2xl ">Level: {level} </p>
       </div>
       <div>
-          <p className="text-xl font-semibold text-black  dark:text-teal-700 lg:text2xl">Status:{status}</p>
+       <p className="m-2  text-black font-medium  dark:text-teal-700 lg:text2xl ">{email}</p>
       </div>
+      
       
     </div>
     <div className="card-actions justify-center mx-4 lg:justify-end">

@@ -5,13 +5,17 @@ import "react-datepicker/dist/react-datepicker.css";
 import Footer from "../Footer/Footer";
 import { useLoaderData } from "react-router-dom";
 import useAxios from "../Hooks/useAxios/useAxios";
+import { useContext } from "react";
+import { AuthContext } from "../Hooks/AuthProvider/AuthProvider";
 
 
 
 
 const UpdateAssignment = () => {
+  
   const axios = useAxios()
     const[selectDate ,setSelectDate] =useState();
+    
     //fetch data
     const userUpdate = useLoaderData()
     const {Pdf,date,description,email,level,mark,thumbnail,title,_id}=userUpdate
@@ -28,13 +32,12 @@ const UpdateAssignment = () => {
     const img= e.target.url.value
     const user ={email, tittle,description, level, mark,date,pdf,img}
     
-
    
       axios.put(`/all-assignments/${_id}`, user)
     .then( res=>{console.log(res)}) 
     .then(err=>{console.log(err)})
     
-    
+  
     }
     
     return (
@@ -81,7 +84,7 @@ const UpdateAssignment = () => {
 
       </div>
      
-      <button className="btn glass w-full mt-3 text-red-700 text-xl">Update Assignment</button>
+      <button className="btn glass w-full mt-3 text-red-700 text-xl disabled">Update Assignment</button>
     </form>
   </div>
 </div>

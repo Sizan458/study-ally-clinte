@@ -1,9 +1,11 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth ,onAuthStateChanged,signInWithEmailAndPassword, signOut,GoogleAuthProvider ,signInWithPopup} from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth ,onAuthStateChanged,signInWithEmailAndPassword, signOut,GoogleAuthProvider ,signInWithPopup, updateProfile} from "firebase/auth";
 import App from "../../FireBase/Firebase";
+import useAxios from "../useAxios/useAxios";
 export const  AuthContext=createContext(null)
   const  auth=getAuth(App)
 const AuthProvider = ({children}) => {
+    const axios =useAxios()
     const [user ,setUser]=useState(null)
     const[loading,setLoading]= useState(true)
     const googleProvider =  new GoogleAuthProvider();
@@ -27,23 +29,42 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return signOut(auth);
     }
+    //user profile update function
+    const updateUserProfile=(name,photo)=>{
+        return updateProfile(auth.currentUser,{
+            displayName:name,
+            photoURL:photo
+        })
+    }
     //keep the current user
     useEffect(()=>{
        const unSubscribe= onAuthStateChanged(auth,currentUser=>{
             setUser(currentUser);
             setLoading(false);
+            //send user data
+            if(currentUser){
+                const logUser={email:currentUser.email}
+                
+                axios.post('/access-token',logUser)
+                .then(res=>{
+                    console.log("token",res.data);
+                })
+            }
+            
+
         });
         return ()=>{
             unSubscribe
         }
-    },[]);
+    },[axios]);
     const authInfo ={
        userEmail,
        signIn,
        user,
        logOut,
        googleSignIn,
-       loading
+       loading,
+      updateUserProfile
 
     }
     return (

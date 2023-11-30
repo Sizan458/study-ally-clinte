@@ -40,11 +40,6 @@ const ShowPdf = ({data}) => {
     </div>
   </div>
 </dialog>
-
-
-
-
-
 </div>
 </div>
 </div>

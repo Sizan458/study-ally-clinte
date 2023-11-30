@@ -42,7 +42,7 @@ const Router =  createBrowserRouter([
         {
             path:"/updateAssignment/:id",
             element:<UpdateAssignment></UpdateAssignment>,
-            loader:({params})=>fetch(`http://localhost:5002/all-assignments/${params.id}`)
+            loader:({params})=>fetch(`https://study-ally-server.vercel.app/${params.id}`)
         },
         {
             path:"/allAssignments",
@@ -52,7 +52,7 @@ const Router =  createBrowserRouter([
         {
             path:"/viewAssignment/:id",
             element:<PrivateRoute><ViewAssignment></ViewAssignment></PrivateRoute>,
-            loader:({params})=>fetch(`http://localhost:5002/all-assignments/${params.id}`)
+            loader:({params})=>fetch(`https://study-ally-server.vercel.app/${params.id}`)
         },
         {
             path:"/myAssignments",
@@ -66,7 +66,7 @@ const Router =  createBrowserRouter([
         {
             path:"/mark/:id",
             element:<Mark/>,
-            loader:({params})=>fetch(`http://localhost:5002/all-assignments/${params.id}`)
+            loader:({params})=>fetch(`https://study-ally-server.vercel.app/${params.id}`)
         }
     ]
     }

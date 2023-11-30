@@ -8,10 +8,11 @@ const MyAssignment = () => {
     // call axios hooks
     const assignment =useAxios()
 //call tankstack query
-const {data:assignments }=useQuery({
+const {data:assignments,refetch }=useQuery({
     queryKey:["my-assignment"],
     queryFn:async()=>{
        const result = await assignment.get('/my-assignment')
+       refetch()
        return result.data
        
     }
