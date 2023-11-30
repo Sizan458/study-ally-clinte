@@ -12,12 +12,12 @@ const ViewAssignment = () => {
     
     const assignment=useLoaderData()
 
-    console.log(assignment)
+    
    
     return (
         <div >
             <div className="w-[90%] mx-auto mt-2">
-            <SingleAssignment  assignment={assignment}></SingleAssignment>
+            <SingleAssignment  key={assignment._id} assignment={assignment}></SingleAssignment>
             </div>
          <div className="mt-2 w-[97%] mx-auto">
          <Footer></Footer>

@@ -10,6 +10,8 @@ import PrivateRoute from "../Hooks/PrivateRoute/PrivateRoute";
 import Assignment from "../allAssignmentPage/Assiignment/Assignment";
 import ViewAssignment from "../ViewAssignmentPage/ViewAssignment";
 import MyAssignment from "../MyAssignmentPage/MyAssignment/MyAssignment";
+import Submitted from "../SubmittedPage/Submitted/Submitted";
+import Mark from "../MarkPage/Mark/Mark";
 
 
 const Router =  createBrowserRouter([
@@ -54,8 +56,17 @@ const Router =  createBrowserRouter([
         },
         {
             path:"/myAssignments",
-            element:<MyAssignment/>
+            element:<PrivateRoute><MyAssignment/></PrivateRoute>
 
+        },
+        {
+            path:"/submitted",
+            element:<Submitted/>
+        },
+        {
+            path:"/mark/:id",
+            element:<Mark/>,
+            loader:({params})=>fetch(`http://localhost:5002/all-assignments/${params.id}`)
         }
     ]
     }

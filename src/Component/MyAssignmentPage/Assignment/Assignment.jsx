@@ -11,7 +11,7 @@ const handleDelete=()=>{
     
 }
     return (
-        <div>
+        <div className="w-[90%] mx-auto">
             <div className="card lg:card-side bg-teal-100  shadow-xl dark:bg-red-200" data-aos="fade-up">
   <figure><img src={thumbnail} className="h-[200px] w-[350px] p-2 rounded-lg md:font-bold md:h-[400px] md:w-[700px] lg:w-[480px] lg:h-[300px] "/></figure>
   <div className="card-body">

@@ -3,6 +3,8 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import Footer from "../Footer/Footer";
+import swal from 'sweetalert';
+
 
 import useAxios from "../Hooks/useAxios/useAxios";
 
@@ -34,6 +36,8 @@ const CreateAssignment = () => {
     axios.post('/my-assignment',user)
    .then(res=>{console.log(res)})
     .catch(err=>{console.log(err)})
+
+    swal("Good job!", "Your assignment has been submitted", "success");
     }
 
 
@@ -52,7 +56,7 @@ const CreateAssignment = () => {
       <input type="text" placeholder="Tittle" name="tittle" className="input input-bordered input-error  w-[300px] md:w-[280px] lg:w-[370px]" />
       </div>
       <div className=" grid grid-cols-1 gap-5 m-3 form-control md:grid-cols-2">
-      <input type="url" placeholder="Thumbnail
+      <input type="text " placeholder="Thumbnail
  Image URL" name="url"  className="input input-bordered input-error   w-[300px] md:w-[280px] lg:w-[370px]" />
      <DatePicker selected={selectDate} onChange={date=>setSelectDate(date)} name="date" dateFormat="yyyy/MM/dd" placeholderText="Submission Date" className="input input-bordered input-error  w-[300px] md:w-[280px] lg:w-[370px]"/>
       </div>
@@ -73,7 +77,7 @@ const CreateAssignment = () => {
       </div>
       <div className=" form-control mt-4">
      
-      <input type="url" placeholder="Put pdf link here" name="pdf" className="input input-bordered input-error  w-[300px]  md:w-[590px] lg:w-[780px]" />
+      <input type="text" placeholder="Put pdf link here" name="pdf" className="input input-bordered input-error  w-[300px]  md:w-[590px] lg:w-[780px]" />
      </div>
       <div className=" form-control mt-4">
      
