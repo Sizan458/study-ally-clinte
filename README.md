@@ -19,5 +19,5 @@ A simple  website to submit assignment
 
 
 ## 🔗 Links
-Livelink : https://study-ally-98f54.web.app
+Livelink : https://flock-e2437.web.app
 
